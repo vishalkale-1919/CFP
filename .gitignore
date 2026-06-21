@@ -1,0 +1,53 @@
+# ==========================================
+# 🌲 System & OS Files
+# ==========================================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+
+# ==========================================
+# ⚛️ Frontend (React / Vite / Node)
+# ==========================================
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.npm/
+
+# ==========================================
+# ☕ Backend (Java / Maven / IntelliJ / Eclipse)
+# ==========================================
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE specific settings
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+
+# Build status tracking
+.mvn/wrapper/maven-wrapper.jar
+
+# ==========================================
+# 🐍 AI Module (Python)
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.pypy/
