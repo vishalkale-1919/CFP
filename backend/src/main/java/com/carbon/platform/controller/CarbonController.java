@@ -20,7 +20,7 @@ public class CarbonController {
     @Autowired private CarbonService carbonService;
     @Autowired private UserRepository userRepository;
 
-    @PostMapping("/calculate") // 🌟 FIXED: Added path extension to match React Axios call
+    @PostMapping({"", "/calculate"}) // 🌟 FIXED: Map to both root and /calculate to support modular page app and monolith
     public ResponseEntity<ApiResponse<CarbonRecord>> logCarbon(@Valid @RequestBody CarbonInputDto dto) {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User context absent"));

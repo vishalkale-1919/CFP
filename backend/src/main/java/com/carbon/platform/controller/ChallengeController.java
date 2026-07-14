@@ -18,14 +18,14 @@ public class ChallengeController {
     @Autowired private ChallengeService challengeService;
     @Autowired private UserRepository userRepository;
 
-    @GetMapping("/hub") // 🌟 ADJUSTED: Named explicitly so you can reference it clearly from frontend
+    @GetMapping({"", "/hub"}) // 🌟 ADJUSTED: Named explicitly so you can reference it clearly from frontend
     public ResponseEntity<ApiResponse<GamificationDto>> getGamificationHub() {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(name).orElseThrow(() -> new RuntimeException("Missing context"));
         return ResponseEntity.ok(ApiResponse.success("Gamification data sync'd", challengeService.getGamificationContext(user)));
     }
 
-    @PostMapping("/challenges/complete/{id}") // 🌟 FIXED: Swapped {id} and complete to match the frontend Axios target exactly
+    @PostMapping({"/challenges/complete/{id}", "/challenges/{id}/complete"}) // 🌟 FIXED: Map to both path layouts to support both frontends
     public ResponseEntity<ApiResponse<String>> processCompletion(@PathVariable Long id) {
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         User user = userRepository.findByUsername(name).orElseThrow(() -> new RuntimeException("Missing context"));

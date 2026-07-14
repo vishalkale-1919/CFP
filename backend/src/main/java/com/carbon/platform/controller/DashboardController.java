@@ -14,7 +14,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/v1/carbon/metrics") // 🌟 FIXED: Changed from /dashboard to match your React App.jsx Axios endpoint call
+@RequestMapping({"/api/v1/carbon/metrics", "/api/v1/dashboard"}) // 🌟 FIXED: Map to both to support monolith and page router
 @CrossOrigin(origins = "http://localhost:5173")
 public class DashboardController {
 
